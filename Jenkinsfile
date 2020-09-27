@@ -13,7 +13,7 @@ pipeline {
       stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("jdevsucks/bluewhale:${env.BUILD_ID}")
+                    myapp = docker.build("jdevsucks/bluewhale")
                 }
             }
         }
@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'jdevsucks') {
-                            myapp.push("latest")
-                            myapp.push("${env.BUILD_ID}")
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
                     }
                 }
             }
