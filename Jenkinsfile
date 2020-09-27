@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'jdevsucks') {
-                    app.push("${env.BUILD_NUMBER}")
-                    app.push("latest")
+                    myapp.push("${env.BUILD_NUMBER}")
+                    myapp.push("latest")
                     }
                 }
             }
