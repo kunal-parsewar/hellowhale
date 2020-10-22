@@ -6,7 +6,8 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/kunal-parsewar/hellowhale.git', branch:'master'
+        checkout scm
+        //git url:'https://github.com/kunal-parsewar/hellowhale.git', branch:'master'
       }
     }
     
