@@ -35,7 +35,7 @@ pipeline {
       steps {
         script {
           //kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "kubeconfig")
-          kubernetesDeploy(kubeconfigId: 'kubeconfig' , configs: 'hellowhale.yml' , enableConfigSubstitution: false)
+          kubernetesDeploy([kubeconfigId: 'kubeconfig' , configs: 'hellowhale.yml'])
         }
       }
     }
