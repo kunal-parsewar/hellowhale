@@ -34,8 +34,12 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
+          // below two commands are not working
           //kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "kubeconfig")
-          kubernetesDeploy([kubeconfigId: 'kubeconfig' , configs: 'hellowhale.yml'])
+          //kubernetesDeploy([kubeconfigId: 'kubeconfig' , configs: 'hellowhale.yml'])
+          
+          kubernetesDeploy(credentialsType: 'KubeConfig', kubeConfig: [path: 'kubeconfig.yaml'], configs: '**/hellowhale.yml', enableConfigSubstitution: false )
+          
         }
       }
     }
