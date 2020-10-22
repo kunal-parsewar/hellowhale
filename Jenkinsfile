@@ -22,7 +22,7 @@ pipeline {
       stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('', 'jdevsucks') {
+                    docker.withRegistry('', 'DockerHub') {
                     myapp.push("${env.BUILD_NUMBER}")
                     myapp.push("latest")
                     }
