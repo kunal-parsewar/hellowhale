@@ -42,7 +42,7 @@ pipeline {
           
           withKubeConfig ([credentialsId: 'kubeconfigyaml' , serverUrl: 'https://172.31.8.223:6443'])
           {
-            sh 'kubectl create -f $WORKSPACE/bluewhale/hellowhale.yml'
+            sh 'kubectl create -f $WORKSPACE/hellowhale.yml'
           }
           
         }
