@@ -38,7 +38,12 @@ pipeline {
           //kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "kubeconfig")
           //kubernetesDeploy([kubeconfigId: 'kubeconfig' , configs: 'hellowhale.yml'])
           
-          kubernetesDeploy(credentialsType: 'KubeConfig', kubeConfig: [path: 'kubeconfig.yaml'], configs: '**/hellowhale.yml', enableConfigSubstitution: false )
+          //kubernetesDeploy(credentialsType: 'KubeConfig', kubeConfig: [path: 'kubeconfig.yaml'], configs: '**/hellowhale.yml', enableConfigSubstitution: false )
+          
+          withKubeConfig ([credentialsId: 'kubeconfig' , serverUrl: 'https://172.31.8.223:6443'])
+          {
+            sh 'kubectl get pods'
+          }
           
         }
       }
