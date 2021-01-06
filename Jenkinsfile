@@ -40,7 +40,7 @@ pipeline {
           
           //kubernetesDeploy(credentialsType: 'KubeConfig', kubeConfig: [path: 'kubeconfig.yaml'], configs: '**/hellowhale.yml', enableConfigSubstitution: false )
           
-          withKubeConfig ([credentialsId: 'kubeconfigyaml' , serverUrl: 'https://172.31.8.223:6443'])
+          withKubeConfig ([credentialsId: 'kubeconfigyaml' , serverUrl: 'https://k8sClusterIp'])
           {
             sh 'kubectl create -f $WORKSPACE/hellowhale.yml'
           }
